@@ -1,0 +1,65 @@
+#header {
+    /* background-image: url("https://tarotreading001.files.wordpress.com/2013/12/untitled.jpg") */
+    background-color: rgb(224, 224, 224);
+    height: 180px;
+    width: 100%;
+    text-align: center;
+}
+
+#content{
+    padding: 25px 350px;
+}
+
+.letterGrid{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 5px;
+    padding: 10px;
+}
+
+thead{
+    background-color: rgb(237, 123, 123);
+}
+
+table {
+    /* width: 50% */
+    /* this does nothing */
+}
+
+#guessesLeft{
+    width: 185px;
+}
+
+tbody{
+    text-align: center;
+}
+
+tr {
+    height: 50px
+}
+
+.td {
+    font-weight: 700; 
+}
+
+h1 {
+    padding-top: 27px;
+    padding-bottom: 0;
+}
+
+h2 {
+    padding-top: 5px;
+    padding-bottom: 50px;
+}
+
+.container {
+    text-align: left;
+}
+
+th{
+    white-space: nowrap;
+}
+
+
+
+

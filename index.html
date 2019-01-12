@@ -1,14 +1,108 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main3.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./assets/javascript/game.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
+
 </head>
+
 <body>
-    
+
+    <div id="header">
+        <h1>Psychic Game</h1>
+        <h2>Guess The Letter I'm Thinking Of!</h2>
+    </div>
+    <div id="content">
+        <table id="wordBox" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>My Letter Choice</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span id="computerPick"></span></td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="yourPick" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Your Letter Guess</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="letterGrid">
+                        <button value="a" id="button_a">a</button>
+                        <button value="b" id="button_b">b</button>
+                        <button value="c" id="button_c">c</button>
+                        <button value="d" id="button_d">d</button>
+                        <button value="e" id="button_e">e</button>
+                        <button value="f" id="button_f">f</button>
+                        <button value="g" id="button_g">g</button>
+                        <button value="h" id="button_h">h</button>
+                        <button value="i" id="button_i">i</button>
+                        <button value="j" id="button_j">j</button>
+                        <button value="k" id="button_k">k</button>
+                        <button value="l" id="button_l">l</button>
+                        <button value="m" id="button_m">m</button>
+                        <button value="n" id="button_n">n</button>
+                        <button value="o" id="button_o">o</button>
+                        <button value="p" id="button_p">p</button>
+                        <button value="q" id="button_q">q</button>
+                        <button value="r" id="button_r">r</button>
+                        <button value="s" id="button_s">s</button>
+                        <button value="t" id="button_t">t</button>
+                        <button value="u" id="button_u">u</button>
+                        <button value="v" id="button_v">v</button>
+                        <button value="w" id="button_w">w</button>
+                        <button value="x" id="button_x">x</button>
+                        <button value="y" id="button_y">y</button>
+                        <button value="z" id="button_z">z</button>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+        <table id="yourGuess" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Your Pick</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span id="result_text"></span></td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="result" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th id="guessesLeft" scope="col">Guesses Remaining</th>
+                    <th id="wins" scope="col">Wins !</th>
+                    <th id="losses" scope="col">Losses</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span id="result_text"></span></td>
+                    <td><span id="wins_text"></span></td>
+                    <td><span id="losses_text"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
 </body>
+
 </html>
