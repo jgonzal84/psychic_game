@@ -18,7 +18,8 @@ $(document).ready(function(){
 
       
     var computerPick = ltrChoices[Math.floor(Math.random() * ltrChoices.length)];
-    console.log(computerPick);
+    document.getElementById("computerPick").innerHTML = ""
+    
     function buttonHandler(){
         var userClickedVal = $(this).val();
         
@@ -26,20 +27,21 @@ $(document).ready(function(){
                 //we keep playing
                 console.log('keep playing')
             if (userClickedVal === computerPick) {
-                console.log('win')
+                console.log('win');
+                document.getElementById("yourPick").innerHTML = "You Guessed It"
 
                 wins++;
                 lettersGuessed = [];
                 guessesLeft = 9;
             }
             else {
-                console.log('bad guess')
-
+                document.getElementById("result_text").innerHTML = "Bad Guess..."
                 guessesLeft--;
                 lettersGuessed.push(userClickedVal);
             }
         }
         else {
+            document.getElementById("lost").innerHTML = "a loss"
             console.log('lost')
 
             //we lose
