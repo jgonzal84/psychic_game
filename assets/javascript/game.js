@@ -1,57 +1,61 @@
-$(document).ready(function(){
+$(document).ready(function () {
     // the problem originally was the DOM wasnt ready. Which is basically the html hadnt been formed yet so when it was trying to find the id that i had created it wasnt there yet. The doc.ready says dont load any of this until the document has loaded.
     // a way to get around that would be to place the JS at the bottom of the file instead of in the head.
-    
-     // var compNumber = Math.floor(Math.random() * 4)+1;
 
-     var ltrChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",];
-    
+    // var compNumber = Math.floor(Math.random() * 4)+1;
+
+    var ltrChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",];
+
     var wins = 0
     var losses = 0
     var guessesLeft = 9
     var lettersGuessed = []
 
-    
-      
-    
-
-
-      
     var computerPick = ltrChoices[Math.floor(Math.random() * ltrChoices.length)];
     document.getElementById("computerPick").innerHTML = ""
-    
-    function buttonHandler(){
+
+    function buttonHandler() {
         var userClickedVal = $(this).val();
-        
-            if(guessesLeft !== 0){
-                //we keep playing
-                console.log('keep playing')
+
+        document.getElementById("winsText").innerHTML = wins
+        document.getElementById("lossesText").innerHTML = losses
+
+        if (guessesLeft !== 0) {
+            //we keep playing
+            console.log('keep playing')
+            guessesLeft--
+            document.getElementById("guessLeftText").innerHTML = guessesLeft
+
             if (userClickedVal === computerPick) {
                 console.log('win');
-                document.getElementById("yourPick").innerHTML = "You Guessed It"
+                document.getElementById("resultText").innerHTML = "You Guessed It !!"
+                document.getElementById("winsText").innerHTML = wins
 
                 wins++;
                 lettersGuessed = [];
-                guessesLeft = 9;
+                
             }
             else {
-                document.getElementById("result_text").innerHTML = "Bad Guess..."
-                guessesLeft--;
+                document.getElementById("resultText").innerHTML = "Bad Guess..."
+                // guessesLeft--;
                 lettersGuessed.push(userClickedVal);
             }
+            
         }
         else {
-            document.getElementById("lost").innerHTML = "a loss"
+            document.getElementById("resultText").innerHTML = "Sorry, you lost.";
             console.log('lost')
+            document.getElementById("lossesText").innerHTML = losses
 
             //we lose
             losses++;
         }
 
-
     };
     $('button').click(buttonHandler);
 
+})
+   
 
     // $('#computerPick').text(compLetter)
 
@@ -64,30 +68,44 @@ $(document).ready(function(){
     //     compLetter = Math.floor(Math.random() * 4)+1;
     // }
 
+ // function buttonHandler() {
+    //     var userClickedVal = $(this).val();
 
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-                /*
-                $("#button_1").unbind('click').bind('click', function() {
-                    buttonHandler(1);
-                });
-                ("#button_2").unbind('click').bind('click', function() {
-                    buttonHandler(2);
-                }); 
-                $("#button_3").unbind('click').bind('click', function() {
-                    buttonHandler(3);
-                }); 
-                $("#button_4").unbind('click').bind('click', function() {
-                    buttonHandler(4);
-                });
-                */
+    //     if (guessesLeft !== 0) {
+    //         //we keep playing
+    //         console.log('keep playing')
 
-})
+    //         if (userClickedVal === computerPick) {
+    //             console.log('win');
+    //             document.getElementById("resultText").innerHTML = "You Guessed It";
+    //             $(document).ready(function () {
+    // the problem originally was the DOM wasnt ready. Which is basically the html hadnt been formed yet so when it was trying to find the id that i had created it wasnt there yet. The doc.ready says dont load any of this until the document has loaded.
+    // a way to get around that would be to place the JS at the bottom of the file instead of in the head.
+
+    // var compNumber = Math.floor(Math.random() * 4)+1;
+
+
+
+
+
+
+
+
+
+
+
+    /*
+    $("#button_1").unbind('click').bind('click', function() {
+        buttonHandler(1);
+    });
+    ("#button_2").unbind('click').bind('click', function() {
+        buttonHandler(2);
+    }); 
+    $("#button_3").unbind('click').bind('click', function() {
+        buttonHandler(3);
+    }); 
+    $("#button_4").unbind('click').bind('click', function() {
+        buttonHandler(4);
+    });
+    */
+
