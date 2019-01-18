@@ -6,54 +6,60 @@ $(document).ready(function () {
 
     var ltrChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",];
 
-    var wins = 0
-    var losses = 0
-    var guessesLeft = 9
-    var lettersGuessed = []
+    var wins = 0;
+    var losses = 0;
+    var guessesLeft = 9;
+    var lettersGuessed = [];
+    var computerPick = "";
+    reset();
 
-    var computerPick = ltrChoices[Math.floor(Math.random() * ltrChoices.length)];
-    document.getElementById("computerPick").innerHTML = ""
-
+    function reset(){
+        computerPick = ltrChoices[Math.floor(Math.random() * ltrChoices.length)];
+        // alert(computerPick);
+        document.getElementById("computerPick").innerText = "Make your first pick!";
+        document.getElementById("winsText").innerText = wins;
+        document.getElementById("lossesText").innerText = losses;
+        document.getElementById("guessLeftText").innerText = guessesLeft;
+    }
     function buttonHandler() {
         var userClickedVal = $(this).val();
-
-        document.getElementById("winsText").innerHTML = wins
-        document.getElementById("lossesText").innerHTML = losses
-
-        if (guessesLeft !== 0) {
+        if (lettersGuessed.indexOf(userClickedVal) > -1 ){
+            document.getElementById("computerPick").innerText = "You already tried that!"
+        }else{
             //we keep playing
             console.log('keep playing')
-            guessesLeft--
-            document.getElementById("guessLeftText").innerHTML = guessesLeft
+            guessesLeft--;
+            document.getElementById("guessLeftText").innerText = guessesLeft;
+            lettersGuessed.push(userClickedVal);
+            document.getElementById("resultText").innerText = lettersGuessed.join(", ");
 
             if (userClickedVal === computerPick) {
-                console.log('win');
-                document.getElementById("resultText").innerHTML = "You Guessed It !!"
-                document.getElementById("winsText").innerHTML = wins
-
                 wins++;
+                console.log('win');
+                document.getElementById("computerPick").innerText = "You Guessed It !! Make another pick to start game again!";
+                document.getElementById("winsText").innerText = wins;
+                guessesLeft = 9;
                 lettersGuessed = [];
-                
             }
             else {
-                document.getElementById("resultText").innerHTML = "Bad Guess..."
-                // guessesLeft--;
-                lettersGuessed.push(userClickedVal);
+
+                if (guessesLeft === 0){
+                    losses++;
+                    guessesLeft = 9;
+                    document.getElementById("guessLeftText").innnerText = guessesLeft;
+                    document.getElementById("computerPick").innerText = "Sorry, you lost. Make another pick to start game again!";
+                    console.log('lost')
+                    document.getElementById("lossesText").innerText = losses;
+                    lettersGuessed = [];
+                } else {
+                    document.getElementById("computerPick").innerText = "Bad Guess...";
+                    // guessesLeft--;
+                    
+                }
             }
-            
         }
-        else {
-            document.getElementById("resultText").innerHTML = "Sorry, you lost.";
-            console.log('lost')
-            document.getElementById("lossesText").innerHTML = losses
-
-            //we lose
-            losses++;
-        }
-
     };
     $('button').click(buttonHandler);
-
 })
    
 
